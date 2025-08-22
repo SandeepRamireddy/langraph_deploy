@@ -39,6 +39,9 @@ app = FastAPI(lifespan=lifespan)
 
 FastAPIInstrumentor.instrument_app(app)
 
+@app.get("/")
+async def root():
+    return {"message": "hello from langraph"}
 
 @app.post("/agent/{agent}")
 async def invoke_agent(agent: str, chat_input: ChatInput):
